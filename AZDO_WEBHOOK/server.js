@@ -1,12 +1,13 @@
 ﻿// server.js
 // npm i express node-fetch@2
+require('dotenv').config(); // <-- Lê automaticamente o ficheiro .env
 const express = require('express');
 const fetch = require('node-fetch');
 
-// ---- Config por ambiente ----
-const AZDO_ORG     = process.env.AZDO_ORG;      // ex: 'a-tua-org' (dev.azure.com/a-tua-org)
-const AZDO_PROJECT = process.env.AZDO_PROJECT;  // ex: 'O-Teu-Projeto'
-const AZDO_PAT     = process.env.AZDO_PAT;      // PAT: Work Items (Read & write). Para fallback de PR: + Code (Read).
+// ---- Config carregada do ficheiro .env ----
+const AZDO_ORG     = process.env.AZDO_ORG;      // ex: 'a-tua-org'
+const AZDO_PROJECT = process.env.AZDO_PROJECT;  // ex: 'o-teu-projeto'
+const AZDO_PAT     = process.env.AZDO_PAT;      // token PAT
 
 // ---- Util ----
 function b64(s){ return Buffer.from(s).toString('base64'); }
